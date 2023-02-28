@@ -1,0 +1,26 @@
+// fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+
+// sass variables
+$pink: #a8328b;
+$blue: #383391;
+$green: #2a632d;
+$montserrat: 'Montserrat', sans-serif;
+
+
+// css rules
+
+h1{
+  color: $pink;
+  font-family: $montserrat;
+}
+
+h3{
+  color: $green;
+}
+
+.box-body{
+  background-color: $blue;
+}

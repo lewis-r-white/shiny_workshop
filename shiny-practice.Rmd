@@ -1,0 +1,114 @@
+---
+title: "shiny"
+author: "Lewis White"
+date: "2023-01-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Shiny
+
+-   Think interactive web pages built by people who love to code in R (no JavaScript necessary)
+
+-   made up of user interface and server
+
+-   server is code that generate + updates plots/visuals user sees
+
+Widgets
+
+-   widgets are web elements that users can interact with via the UI
+
+-   Widget gets info from user (make a choice). Server uses value, updates outputs based on the input, then shows the output on the server
+
+Repository structure
+
+project-name
+
+-   .Rproj
+
+-   myapp (folder)
+
+    -   app.R (if one file, MUST be called app.R. If using two files, must be OR ui.R & server.R. Sam recommends that we use two different files + global.R to keep things clean and organized.)
+
+    -   global.R (optional)
+
+    -   Data (optional)
+
+        -   my_data_csv
+
+    -   www (optional. must be called "www". stuff you want to load into the app. style sheet and images)
+
+        -   my_styles.css
+
+        -   my_logo.png
+
+-   R (optional \~ lives outside of apps sub directory; a place for scripts not used by your app (e.g. for data wrangling, practice data viz). building desired outputs first as static plots in separate script makes turning them into reactive outputs much easier later on. )
+
+Sliders:
+
+-   always have inputID. this goes first
+
+Render function
+
+every output function has corresponding render function
+
+Rules:
+
+-   save objects you want tto display as output#\<id\>
+
+Recap:
+
+-   created an app.R file in it's own directoru and behan our app with the template
+
+-   We added an input to the fluidPage() in our UI using an \*Input() function and have it a unique inputId (e.g. "inputId" = "unique_input_Id_name")
+
+    -   if not unique, shiny wont know what to grab
+
+-   we created a placeholder for our reactive object using \*Output() function in the fluidPage () and gave it a unique output ID
+
+-   We wrote the server instructions for how to assemple inputs into outputs, following these rules:
+
+    -   save objects that you want to display to output\$\<id\>
+
+    -   build reactive objects using a render\*() function (and similalrly, built reactive data frames using reactive()
+
+    -   access input valued with input\$\<id\>
+
+common mistakes to look out for
+
+-   misspelling inputId
+
+-   misspelling your inputId
+
+-   repeating an inputId
+
+-   forgetting commas
+
+-   forgetting set of parentheses
+
+ArtofR package for spacing stuff
+
+## Day 2
+
+difference between Shiny app and Shiny dashboard
+
+-   input and functions slightly different
+
+-   essentially just a shiny app with more ui customization
+
+Dashboard parts
+
+-   header
+
+-   sidebar
+
+-   box
+
+-   body
+
+to deploy
+
+rsconnect::deployApp("directory of app")
